@@ -1324,7 +1324,7 @@
             if (/^data:image\/(png|jpeg|webp|gif);base64,/i.test(rawValue)) return rawValue;
             try {
                 const url = new URL(rawValue, location.href);
-                return ['http:', 'https:', 'file:'].includes(url.protocol) ? rawValue : '';
+                return ['http:', 'https:', 'file:'].includes(url.protocol) ? url.href : '';
             } catch {
                 return '';
             }
