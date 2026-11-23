@@ -535,11 +535,15 @@
         .records-intro { margin-bottom: 22px; color: #9ab0c4; }
         .records-rules { margin-bottom: 20px; }
         .records-rules p { color: #bdcede; line-height: 1.5; }
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 18px; }
-        .info-grid .panel-section { margin: 0; }
-        .info-grid p, .info-grid li { color: #bdcede; line-height: 1.55; }
-        .info-grid ul { display: grid; gap: 8px; padding-left: 20px; }
-        .info-grid strong { color: #effaff; }
+        .changelog-list { display: grid; gap: 18px; }
+        .changelog-entry { margin: 0; }
+        .changelog-entry h3 { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .changelog-release-date { color: #9ab0c4; font: 600 .82rem var(--font-main); letter-spacing: 0; text-transform: none; white-space: nowrap; }
+        .changelog-entry h4 { margin: 20px 0 10px; color: var(--accent-sky); font: 700 1rem var(--font-main); }
+        .changelog-entry p, .changelog-entry li { color: #bdcede; line-height: 1.55; }
+        .changelog-entry > ul { display: grid; gap: 12px; padding-left: 20px; }
+        .changelog-entry li ul { display: grid; gap: 6px; margin-top: 6px; padding-left: 20px; }
+        .changelog-entry strong { color: #effaff; }
         .leaderboard { width: 100%; border-collapse: collapse; }
         .leaderboard th, .leaderboard td { padding: 13px 15px; border-bottom: 1px solid var(--border-color); text-align: left; }
         .leaderboard th { color: var(--accent-sky); text-transform: uppercase; font-size: .86rem; }
@@ -585,7 +589,7 @@
         <nav class="nav-links">
             <a href="#demon-list" class="active" data-view="demons" data-i18n="demonList">Demon List</a>
             <a href="#records" data-view="records" data-i18n="records">Records</a>
-            <a href="#info" data-view="info" data-i18n="info">Info</a>
+            <a href="#changelog" data-view="changelog" data-i18n="changelog">Changelog</a>
             <button class="button language-toggle" id="language-toggle" type="button" aria-label="Change language">Español</button>
         </nav>
     </header>
@@ -663,9 +667,26 @@
 
     <!-- JS -->
     <script>
-        // BASE DE DATOS DE LOS 24 NIVELES
+        // DATOS INICIALES DE NIVELES Y POSICIONES
         let demonsData = {
     "1":  {
+              "title":  "Paracosm Circles",
+              "creator":  "N1X0",
+              "publisher":  "N1X0",
+              "videoUrl":  "",
+              "imageUrl":  "images/Paracosm Circles.webp",
+              "requirement":  "100%",
+              "difficulty":  "Medium Demon",
+              "estimatedDifficulty":  "",
+              "points":  400,
+              "records":  [
+                              {
+                                  "user":  "Lucas22Riv",
+                                  "proof":  "Verificador"
+                              }
+                          ]
+          },
+    "2":  {
               "title":  "Ultra Violence",
               "creator":  "Xender Game",
               "publisher":  "Viprin",
@@ -673,22 +694,7 @@
               "imageUrl":  "Ultra Violence.png",
               "requirement":  "100%",
               "difficulty":  "Medium Demon",
-              "points":  400,
-              "records":  [
-                              {
-                                  "user":  "Thiagucho2012",
-                                  "proof":  "Verificador"
-                              }
-                          ]
-          },
-    "2":  {
-              "title":  "Bloudeleuste",
-              "creator":  "MrSpaghetti",
-              "publisher":  "MrSpaghetti \u0026 Hyden",
-              "videoUrl":  "https://www.youtube.com/embed/u_v_Lz_3kG4",
-              "imageUrl":  "Bloudeleuste.png",
-              "requirement":  "100%",
-              "difficulty":  "Easy Demon",
+              "estimatedDifficulty":  "",
               "points":  350,
               "records":  [
                               {
@@ -698,13 +704,14 @@
                           ]
           },
     "3":  {
-              "title":  "Sakupen Egg",
-              "creator":  "Sivlol",
-              "publisher":  "Sivlol",
-              "videoUrl":  "",
-              "imageUrl":  "Sakupen Egg.jpeg",
+              "title":  "Bloudeleuste",
+              "creator":  "MrSpaghetti",
+              "publisher":  "MrSpaghetti \u0026 Hyden",
+              "videoUrl":  "https://www.youtube.com/embed/u_v_Lz_3kG4",
+              "imageUrl":  "Bloudeleuste.png",
               "requirement":  "100%",
-              "difficulty":  "Medium Demon",
+              "difficulty":  "Easy Demon",
+              "estimatedDifficulty":  "",
               "points":  330,
               "records":  [
                               {
@@ -714,6 +721,40 @@
                           ]
           },
     "4":  {
+              "title":  "Sakupen Egg",
+              "creator":  "Sivlol",
+              "publisher":  "Sivlol",
+              "videoUrl":  "",
+              "imageUrl":  "Sakupen Egg.jpeg",
+              "requirement":  "100%",
+              "difficulty":  "Medium Demon",
+              "estimatedDifficulty":  "",
+              "points":  310,
+              "records":  [
+                              {
+                                  "user":  "Thiagucho2012",
+                                  "proof":  "Verificador"
+                              }
+                          ]
+          },
+    "5":  {
+              "title":  "Thermodinamix",
+              "creator":  "Edooox",
+              "publisher":  "Edooox",
+              "videoUrl":  "",
+              "imageUrl":  "images/Thermodinamix.webp",
+              "requirement":  "100%",
+              "difficulty":  "Easy Demon",
+              "estimatedDifficulty":  "",
+              "points":  290,
+              "records":  [
+                              {
+                                  "user":  "Thiagucho2012",
+                                  "proof":  "Verificador"
+                              }
+                          ]
+          },
+    "6":  {
               "title":  "B",
               "creator":  "Motleyorc \u0026 ScorchVx",
               "publisher":  "Motleyorc",
@@ -721,7 +762,8 @@
               "imageUrl":  "B.jpeg",
               "requirement":  "100%",
               "difficulty":  "Medium Demon",
-              "points":  310,
+              "estimatedDifficulty":  "",
+              "points":  270,
               "records":  [
                               {
                                   "user":  "PurpleDusk13",
@@ -733,54 +775,15 @@
                               }
                           ]
           },
-    "5":  {
-              "title":  "Death Moon",
-              "creator":  "Caustic",
-              "publisher":  "Caustic",
-              "videoUrl":  "https://www.youtube.com/embed/6m6Ssm_Wv6E",
-              "imageUrl":  "Death Moon.jpeg",
-              "requirement":  "100%",
-              "difficulty":  "Easy Demon",
-              "points":  290,
-              "records":  [
-                              {
-                                  "user":  "Thiagucho2012",
-                                  "proof":  "Verificador"
-                              },
-                              {
-                                  "user":  "Lucas22RIV",
-                                  "proof":  "100%"
-                              },
-                              {
-                                  "user":  "Kenjakuro",
-                                  "proof":  "100%"
-                              }
-                          ]
-          },
-    "6":  {
-              "title":  "Ultra Paracosm",
-              "creator":  "Xtrullor",
-              "publisher":  "Xtrullor",
-              "videoUrl":  "",
-              "imageUrl":  "Ultra Paracosm.jpeg",
-              "requirement":  "100%",
-              "difficulty":  "Easy Demon",
-              "points":  270,
-              "records":  [
-                              {
-                                  "user":  "Lucas22RIV",
-                                  "proof":  "Verificador"
-                              }
-                          ]
-          },
     "7":  {
-              "title":  "Broken Roulette",
-              "creator":  "NoFlix",
-              "publisher":  "NoFlix",
+              "title":  "Bloudebafe",
+              "creator":  "MrSpaghetti \u0026 Hydren",
+              "publisher":  "MrSpaaghetti",
               "videoUrl":  "",
-              "imageUrl":  "images/Broken Roulette.webp",
+              "imageUrl":  "images/Bloudebafe.webp",
               "requirement":  "100%",
               "difficulty":  "Easy Demon",
+              "estimatedDifficulty":  "",
               "points":  250,
               "records":  [
                               {
@@ -790,13 +793,14 @@
                           ]
           },
     "8":  {
-              "title":  "Problematic",
-              "creator":  "Dhafin",
-              "publisher":  "Dhafin",
-              "videoUrl":  "https://www.youtube.com/embed/u_v_Lz_3kG4",
-              "imageUrl":  "Problematic.jpeg",
+              "title":  "Death Moon",
+              "creator":  "Caustic",
+              "publisher":  "Caustic",
+              "videoUrl":  "https://www.youtube.com/embed/6m6Ssm_Wv6E",
+              "imageUrl":  "Death Moon.jpeg",
               "requirement":  "100%",
               "difficulty":  "Easy Demon",
+              "estimatedDifficulty":  "",
               "points":  230,
               "records":  [
                               {
@@ -806,22 +810,6 @@
                               {
                                   "user":  "Lucas22RIV",
                                   "proof":  "100%"
-                              }
-                          ]
-          },
-    "9":  {
-              "title":  "X",
-              "creator":  "TriAxis",
-              "publisher":  "TriAxis",
-              "videoUrl":  "https://www.youtube.com/embed/eXbS8YgG9x4",
-              "imageUrl":  "X.jpeg",
-              "requirement":  "100%",
-              "difficulty":  "Easy Demon",
-              "points":  210,
-              "records":  [
-                              {
-                                  "user":  "Thiagucho2012",
-                                  "proof":  "Verificador"
                               },
                               {
                                   "user":  "Kenjakuro",
@@ -829,14 +817,32 @@
                               }
                           ]
           },
+    "9":  {
+              "title":  "Ultra Paracosm",
+              "creator":  "Xtrullor",
+              "publisher":  "Xtrullor",
+              "videoUrl":  "",
+              "imageUrl":  "Ultra Paracosm.jpeg",
+              "requirement":  "100%",
+              "difficulty":  "Easy Demon",
+              "estimatedDifficulty":  "",
+              "points":  210,
+              "records":  [
+                              {
+                                  "user":  "Lucas22RIV",
+                                  "proof":  "Verificador"
+                              }
+                          ]
+          },
     "10":  {
-               "title":  "Retro Circles",
-               "creator":  "Nacht21",
-               "publisher":  "Nacht21",
-               "videoUrl":  "https://www.youtube.com/embed/u_v_Lz_3kG4",
-               "imageUrl":  "Retro Circles.jpeg",
+               "title":  "X",
+               "creator":  "TriAxis",
+               "publisher":  "TriAxis",
+               "videoUrl":  "https://www.youtube.com/embed/eXbS8YgG9x4",
+               "imageUrl":  "X.jpeg",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  190,
                "records":  [
                                {
@@ -846,6 +852,44 @@
                                {
                                    "user":  "Kenjakuro",
                                    "proof":  "100%"
+                               }
+                           ]
+           },
+    "11":  {
+               "title":  "Broken Roulette",
+               "creator":  "NoFlix",
+               "publisher":  "NoFlix",
+               "requirement":  "100%",
+               "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
+               "points":  170,
+               "imageUrl":  "images/Broken Roulette.webp",
+               "videoUrl":  "",
+               "records":  [
+                               {
+                                   "user":  "Thiagucho2012",
+                                   "proof":  "Verificador"
+                               },
+                               {
+                                   "user":  "Kenjakuro",
+                                   "proof":  "100%"
+                               }
+                           ]
+           },
+    "12":  {
+               "title":  "Problematic",
+               "creator":  "Dhafin",
+               "publisher":  "Dhafin",
+               "videoUrl":  "https://www.youtube.com/embed/u_v_Lz_3kG4",
+               "imageUrl":  "Problematic.jpeg",
+               "requirement":  "100%",
+               "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
+               "points":  150,
+               "records":  [
+                               {
+                                   "user":  "Thiagucho2012",
+                                   "proof":  "Verificador"
                                },
                                {
                                    "user":  "Lucas22RIV",
@@ -853,15 +897,16 @@
                                }
                            ]
            },
-    "11":  {
-               "title":  "Deadlocked",
-               "creator":  "RobTop",
-               "publisher":  "RobTop",
-               "videoUrl":  "https://www.youtube.com/embed/P6V_mHe71mE",
-               "imageUrl":  "Deadlocked.jpeg",
+    "13":  {
+               "title":  "Retro Circles",
+               "creator":  "Nacht21",
+               "publisher":  "Nacht21",
+               "videoUrl":  "https://www.youtube.com/embed/u_v_Lz_3kG4",
+               "imageUrl":  "Retro Circles.jpeg",
                "requirement":  "100%",
-               "difficulty":  "RobTop Demon",
-               "points":  170,
+               "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
+               "points":  130,
                "records":  [
                                {
                                    "user":  "Thiagucho2012",
@@ -875,26 +920,51 @@
                                    "user":  "Lucas22RIV",
                                    "proof":  "100%"
                                }
-                           ],
-               "estimatedDifficulty":  "Medium Demon"
+                           ]
            },
-    "12":  {
-               "title":  "Speed Racer",
-               "creator":  "ZenthicAlpha",
-               "publisher":  "ZenthicAlpha",
-               "videoUrl":  "",
-               "imageUrl":  "images/Speed Racer.webp",
+    "14":  {
+               "title":  "Deadlocked",
+               "creator":  "RobTop",
+               "publisher":  "RobTop",
                "requirement":  "100%",
-               "difficulty":  "Easy Demon",
-               "points":  150,
+               "difficulty":  "RobTop Demon",
+               "estimatedDifficulty":  "Medium Demon",
+               "points":  110,
+               "imageUrl":  "Deadlocked.jpeg",
+               "videoUrl":  "https://www.youtube.com/embed/P6V_mHe71mE",
                "records":  [
                                {
                                    "user":  "Thiagucho2012",
                                    "proof":  "Verificador"
+                               },
+                               {
+                                   "user":  "Kenjakuro",
+                                   "proof":  "100%"
                                }
                            ]
            },
-    "13":  {
+    "15":  {
+               "title":  "Speed Racer",
+               "creator":  "ZenthicAlpha",
+               "publisher":  "ZenthicAlpha",
+               "requirement":  "100%",
+               "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
+               "points":  100,
+               "imageUrl":  "images/Speed Racer.webp",
+               "videoUrl":  "",
+               "records":  [
+                               {
+                                   "user":  "Thiagucho2012",
+                                   "proof":  "Verificador"
+                               },
+                               {
+                                   "user":  "Kenjakuro",
+                                   "proof":  "100%"
+                               }
+                           ]
+           },
+    "16":  {
                "title":  "Ablaze",
                "creator":  "Wav",
                "publisher":  "Wav",
@@ -902,7 +972,8 @@
                "imageUrl":  "images/Ablaze.jpg",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
-               "points":  130,
+               "estimatedDifficulty":  "",
+               "points":  100,
                "records":  [
                                {
                                    "user":  "Thenkafu",
@@ -910,23 +981,28 @@
                                }
                            ]
            },
-    "14":  {
-               "title":  "At the speed of light",
+    "17":  {
+               "title":  "Speed of light",
                "creator":  "TheRealSalad",
                "publisher":  "TheRealSalad",
-               "videoUrl":  "",
-               "imageUrl":  "images/At the speed of light.webp",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
-               "points":  110,
+               "estimatedDifficulty":  "",
+               "points":  100,
+               "imageUrl":  "images/At the speed of light.webp",
+               "videoUrl":  "",
                "records":  [
                                {
                                    "user":  "Thiagucho2012",
                                    "proof":  "Verificador"
+                               },
+                               {
+                                   "user":  "Kenjakuro",
+                                   "proof":  "100%"
                                }
                            ]
            },
-    "15":  {
+    "18":  {
                "title":  "Error",
                "creator":  "ilSanE",
                "publisher":  "ilSanE",
@@ -934,6 +1010,7 @@
                "imageUrl":  "Error.jpeg",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  100,
                "records":  [
                                {
@@ -946,7 +1023,7 @@
                                }
                            ]
            },
-    "16":  {
+    "19":  {
                "title":  "Into The Mainframe",
                "creator":  "iiJason124",
                "publisher":  "iiJason124",
@@ -954,6 +1031,7 @@
                "imageUrl":  "images/Into The Mainframe.webp",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  100,
                "records":  [
                                {
@@ -962,7 +1040,7 @@
                                }
                            ]
            },
-    "17":  {
+    "20":  {
                "title":  "Change Of Scene",
                "creator":  "Bli",
                "publisher":  "Bli",
@@ -970,6 +1048,7 @@
                "imageUrl":  "Change Of Scene.jpeg",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  100,
                "records":  [
                                {
@@ -978,7 +1057,7 @@
                                }
                            ]
            },
-    "18":  {
+    "21":  {
                "title":  "Anima",
                "creator":  "BraedenTheCroco",
                "publisher":  "BraedenTheCroco",
@@ -986,6 +1065,7 @@
                "imageUrl":  "Anima.jpeg",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  100,
                "records":  [
                                {
@@ -994,7 +1074,7 @@
                                }
                            ]
            },
-    "19":  {
+    "22":  {
                "title":  "Red Alert",
                "creator":  "ratliffigd",
                "publisher":  "ratliffigd",
@@ -1002,6 +1082,7 @@
                "imageUrl":  "images/Red Alert.webp",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  100,
                "records":  [
                                {
@@ -1014,7 +1095,7 @@
                                }
                            ]
            },
-    "20":  {
+    "23":  {
                "title":  "Invisible Clubstep",
                "creator":  "Krmal",
                "publisher":  "Krmal",
@@ -1022,6 +1103,7 @@
                "imageUrl":  "images/Invisible Clubstep.webp",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  100,
                "records":  [
                                {
@@ -1030,7 +1112,7 @@
                                }
                            ]
            },
-    "21":  {
+    "24":  {
                "title":  "Blue Hell",
                "creator":  "Lazye",
                "publisher":  "Lazye",
@@ -1038,6 +1120,7 @@
                "imageUrl":  "Blue Hell.jpeg",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  100,
                "records":  [
                                {
@@ -1050,7 +1133,21 @@
                                }
                            ]
            },
-    "22":  {
+    "25":  {
+               "title":  "GG",
+               "creator":  "Mulpan",
+               "publisher":  "Mulpan",
+               "requirement":  "100%",
+               "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
+               "points":  100,
+               "imageUrl":  "images/GG.webp",
+               "videoUrl":  "",
+               "records":  [
+
+                           ]
+           },
+    "26":  {
                "title":  "Theory of everything 2",
                "creator":  "RobTop",
                "publisher":  "RobTop",
@@ -1058,6 +1155,7 @@
                "imageUrl":  "Theory of everything 2.jpeg",
                "requirement":  "100%",
                "difficulty":  "RobTop Demon",
+               "estimatedDifficulty":  "Easy Demon",
                "points":  100,
                "records":  [
                                {
@@ -1068,10 +1166,9 @@
                                    "user":  "Kenjakuro",
                                    "proof":  "100%"
                                }
-                           ],
-               "estimatedDifficulty":  "Easy Demon"
+                           ]
            },
-    "23":  {
+    "27":  {
                "title":  "Impulse",
                "creator":  "MrKoolTrix",
                "publisher":  "MrKoolTrix",
@@ -1079,6 +1176,7 @@
                "imageUrl":  "Impulse.jpeg",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  100,
                "records":  [
                                {
@@ -1087,7 +1185,7 @@
                                }
                            ]
            },
-    "24":  {
+    "28":  {
                "title":  "GG EZ",
                "creator":  "Wetols",
                "publisher":  "Wetols",
@@ -1095,6 +1193,7 @@
                "imageUrl":  "GG EZ.jpeg",
                "requirement":  "100%",
                "difficulty":  "Easy Demon",
+               "estimatedDifficulty":  "",
                "points":  100,
                "records":  [
                                {
@@ -1104,13 +1203,13 @@
                            ]
            }
 };
-
-                const STORAGE_KEY = 'reconquista-demon-list-v3';
+        const STORAGE_KEY = 'reconquista-demon-list-v3';
+                const ORDER_CHANGE_STORAGE_KEY = 'reconquista-order-changelog-v1';
         const LANGUAGE_STORAGE_KEY = 'reconquista-language-v1';
         const OWNER_EDIT_CODE = '25051291218';
         const translations = {
             en: {
-                demonList: 'Demon List', records: 'Records', info: 'Info', changeLanguage: 'Change language',
+                demonList: 'Demon List', records: 'Records', changelog: 'Changelog', changeLanguage: 'Change language',
                 pageName: 'Reconquista Demon List', savedLocally: '• Your changes are saved in this browser',
                 demonRankings: 'DEMON RANKINGS', searchPlaceholder: 'Search levels or creators…', searchDemons: 'Search demons',
                 enableEditing: 'Enable editing', finishEditing: 'Finish editing', addDemon: '＋ Add a demon',
@@ -1141,18 +1240,39 @@
                 scoringDescription: 'A 100% completion earns that level’s current placement points. The Verifier also earns those completion points, plus a 50-point verification bonus for that level.',
                 rank: 'Rank', player: 'Player', completions: '100% completions', verifications: 'Verifications',
                 noPlayerRecords: 'No player records have been added yet.',
-                aboutTitle: 'About the Reconquista List',
-                aboutIntro: 'A community ranking of Geometry Dash demons, with player completions and verification records.',
-                howListWorks: 'How the list works',
-                howListDescription: 'Levels are ordered by their placement: #1 is the hardest demon on the list. Select a level from the Demon List to see its creators, difficulty, minimum completion requirement, points, and records.',
-                playerPoints: 'Player points',
-                completionPoints: 'A recorded 100% completion earns the level’s current placement points.',
-                verifierPoints: 'The Verifier earns those completion points plus a 50-point verification bonus.',
-                pointsUpdate: 'Level points update automatically when placements change. See Records for the current leaderboard and each player’s history.',
-                editingTheList: 'Editing the list',
-                editingDescription: 'On the Demon List, choose Enable editing to add, update, reorder, or remove levels and manage their records. Only one Verifier can be assigned to each level.',
-                savedOnDevice: 'Saved on this device',
-                savedDescription: 'List edits are saved in this browser and are not shared or synchronized to other devices. Clearing this browser’s site data will remove the saved edits.',
+                changelogTitle: 'Changelog',
+                changelogIntro: 'A HUGE UPDATE! Reconquista List version 2.2!',
+                nextRelease: 'Version 2.21',
+                nextReleaseDate: 'Released 11/23/2026',
+                changelogSectionAdded: 'Added a Changelog section to document releases and updates, including a dedicated section for level order changes sorted from highest to lowest placement. Added the Version 2.21 release date.',
+                changelogOrderTitle: 'Level order changes',
+                changelogAddedFormat: '{level} was added to Top {rank}, below {below} and above {above}.',
+                changelogMovedFormat: '{level} moved to Top {rank}, below {below} and above {above} (from Top {oldRank}).',
+                changelogTopOneFormat: '🏆 {level} was added to Top 1, taking the throne from {previousTop} after {days} days.',
+                changelogTopOnePending: '🏆 {level} was added to Top 1, taking the throne from {previousTop}; reign duration to be added.',
+                changelogRemovedFormat: '{level} was removed from Top {rank}.',
+                changelogTopBoundary: 'the top of the list',
+                changelogBottomBoundary: 'the bottom of the list',
+                noLevelOrderChanges: 'No level order changes recorded yet.',
+                changelogSaveFailed: 'The level change was saved, but its changelog entry could not be saved in this browser.',
+                currentRelease: 'Version 2.2',
+                releaseDate: 'Released 9/11/2026',
+                changelogChanges: 'Changes',
+                changelogDesign: '🪄 A better new list design',
+                changelogDarkTheme: 'A new dark color theme for the list.',
+                changelogTopOneRed: 'The Top 1 level now has a red-themed page.',
+                changelogLanguages: 'The list is now available in Spanish and English.',
+                changelogPlayerPoints: '✨ A new player points leaderboard ✨',
+                changelogEarnPoints: 'Players earn points on the Records List for every level they beat.',
+                changelogVerificationBonus: 'Verifying a level earns the Verifier an extra 50-point bonus.',
+                changelogInGameDifficulty: '⭐ Level descriptions now show the in-game difficulty ⭐',
+                changelogUnratedEstimate: 'For unrated levels, an approximate difficulty determined by participants is shown.',
+                changelogRobtopEstimate: 'RobTop levels also show an approximate difficulty determined by participants.',
+                changelogAlwaysAvailable: 'THE RECONQUISTA LIST IS NOW AVAILABLE ANYTIME!',
+                changelogOfficialPage: 'The list now has an official Google page available 24/7, viewable on both mobile phones and computers.',
+                changelogRankings: 'Level and placement changes',
+                changelogNewTopOne: '🏆 ULTRA VIOLENCE took the throne from Bloudeleuste after 200 days.',
+                changelogNewVerifiedLevels: 'New verified levels have been added.',
                 addTitle: 'Add a demon', editTitle: 'Edit demon', emptyList: 'Your list is empty',
                 addToStart: 'Add a demon to get started.', verifierLimit: 'Only one Verifier is allowed per level.',
                 removeConfirmation: 'Remove “{title}” from the list?', saveFailed: 'Could not save this level.',
@@ -1162,7 +1282,7 @@
                 showLevelsFor: 'Show levels for'
             },
             es: {
-                demonList: 'Lista de Demonios', records: 'Récords', info: 'Info', changeLanguage: 'Cambiar idioma',
+                demonList: 'Lista de Demonios', records: 'Récords', changelog: 'Novedades', changeLanguage: 'Cambiar idioma',
                 pageName: 'Lista de Demonios Reconquista', savedLocally: '• Tus cambios se guardan en este navegador',
                 demonRankings: 'CLASIFICACIÓN DE DEMONIOS', searchPlaceholder: 'Buscar niveles o creadores…', searchDemons: 'Buscar demonios',
                 enableEditing: 'Activar edición', finishEditing: 'Terminar edición', addDemon: '＋ Añadir demonio',
@@ -1193,18 +1313,39 @@
                 scoringDescription: 'Completar un nivel al 100% otorga los puntos actuales de su posición. El verificador también recibe esos puntos y una bonificación de 50 puntos por verificar el nivel.',
                 rank: 'Posición', player: 'Jugador', completions: 'Completados al 100%', verifications: 'Verificaciones',
                 noPlayerRecords: 'Aún no se han añadido récords de jugadores.',
-                aboutTitle: 'Acerca de la Lista Reconquista',
-                aboutIntro: 'Una clasificación comunitaria de demonios de Geometry Dash, con récords de completado y verificación.',
-                howListWorks: 'Cómo funciona la lista',
-                howListDescription: 'Los niveles se ordenan por posición: el #1 es el demonio más difícil de la lista. Selecciona un nivel para ver sus creadores, dificultad, requisito mínimo, puntos y récords.',
-                playerPoints: 'Puntos de jugadores',
-                completionPoints: 'Un completado registrado al 100% otorga los puntos actuales de la posición del nivel.',
-                verifierPoints: 'El verificador recibe esos puntos y una bonificación de 50 puntos por verificar.',
-                pointsUpdate: 'Los puntos se actualizan automáticamente al cambiar las posiciones. Consulta Récords para ver la clasificación y el historial de cada jugador.',
-                editingTheList: 'Editar la lista',
-                editingDescription: 'En la Lista de Demonios, activa la edición para añadir, actualizar, reordenar o eliminar niveles y gestionar sus récords. Solo se permite un verificador por nivel.',
-                savedOnDevice: 'Guardado en este dispositivo',
-                savedDescription: 'Los cambios se guardan en este navegador y no se comparten ni sincronizan con otros dispositivos. Si borras los datos del sitio, perderás los cambios guardados.',
+                changelogTitle: 'Novedades',
+                changelogIntro: '¡Actualización gigante! ¡Versión 2.2 de la Reconquista List!',
+                nextRelease: 'Versión 2.21',
+                nextReleaseDate: 'Publicado el 23/11/2026',
+                changelogSectionAdded: 'Se añadió una sección de novedades para documentar versiones y actualizaciones, incluida una sección dedicada a los cambios en el orden de los niveles, ordenados de mayor a menor posición. Se añadió la fecha de lanzamiento de la versión 2.21.',
+                changelogOrderTitle: 'Cambios en el orden de los niveles',
+                changelogAddedFormat: '{level} se añadió al Top {rank}, por debajo de {below} y por encima de {above}.',
+                changelogMovedFormat: '{level} se movió al Top {rank}, por debajo de {below} y por encima de {above} (desde el Top {oldRank}).',
+                changelogTopOneFormat: '🏆 {level} se añadió al Top 1 y tomó el trono de {previousTop} después de {days} días.',
+                changelogTopOnePending: '🏆 {level} se añadió al Top 1 y tomó el trono de {previousTop}; se añadirá la duración de su reinado.',
+                changelogRemovedFormat: '{level} se eliminó del Top {rank}.',
+                changelogTopBoundary: 'el inicio de la lista',
+                changelogBottomBoundary: 'el final de la lista',
+                noLevelOrderChanges: 'Aún no se han registrado cambios en el orden de los niveles.',
+                changelogSaveFailed: 'El cambio del nivel se guardó, pero no se pudo guardar su entrada en las novedades de este navegador.',
+                currentRelease: 'Versión 2.2',
+                releaseDate: 'Publicado el 9/11/2026',
+                changelogChanges: 'Cambios',
+                changelogDesign: '🪄 Nuevo y mejor diseño de la lista',
+                changelogDarkTheme: 'Nuevo tema oscuro para la lista.',
+                changelogTopOneRed: 'El nivel Top 1 ahora tiene una página de color rojo.',
+                changelogLanguages: 'La lista ahora está disponible en español e inglés.',
+                changelogPlayerPoints: '✨ ¡Nueva lista de puntuación de los jugadores! ✨',
+                changelogEarnPoints: 'Por cada nivel superado de la lista, el jugador ganará puntos para la Lista de Récords.',
+                changelogVerificationBonus: 'Por cada nivel verificado, se suma un bonus de 50 puntos al verificador.',
+                changelogInGameDifficulty: '⭐ Ahora en la descripción de los niveles se puede ver su dificultad en el juego ⭐',
+                changelogUnratedEstimate: 'Si un nivel no tiene rate, se muestra una dificultad aproximada determinada por los participantes.',
+                changelogRobtopEstimate: 'En los niveles de RobTop también se muestra una dificultad aproximada determinada por los participantes.',
+                changelogAlwaysAvailable: '¡AHORA LA RECONQUISTA LIST ESTÁ DISPONIBLE CUANDO QUIERAS!',
+                changelogOfficialPage: 'La lista ahora tiene una página oficial en Google disponible las 24 horas, que se puede consultar tanto en celular como en computadora.',
+                changelogRankings: 'Cambios en los niveles y las posiciones',
+                changelogNewTopOne: '🏆 ULTRA VIOLENCE tomó el trono de Bloudeleuste después de 200 días.',
+                changelogNewVerifiedLevels: 'Se han añadido nuevos niveles verificados.',
                 addTitle: 'Añadir demonio', editTitle: 'Editar demonio', emptyList: 'La lista está vacía',
                 addToStart: 'Añade un demonio para comenzar.', verifierLimit: 'Solo se permite un verificador por nivel.',
                 removeConfirmation: '¿Eliminar «{title}» de la lista?', saveFailed: 'No se pudo guardar este nivel.',
@@ -1243,6 +1384,15 @@
         let adminMode = false;
         let activeRank = '1';
         let editingRank = null;
+        const historicalOrderChanges = [
+            { action: 'topOne', title: 'Paracosm Circles', rank: 1, previousTop: 'Ultra Violence', days: 14 },
+            { action: 'added', title: 'Thermodinamix', rank: 5, above: 'B', below: 'Sakupen Egg' },
+            { action: 'moved', title: 'X', rank: 7, above: 'Broken Roulette', below: 'Ultra Paracosm', oldRank: 9 },
+            { action: 'added', title: 'Bloudebafe', rank: 7, above: 'Death Moon', below: 'B' },
+            { action: 'added', title: 'GG', rank: 25, above: 'Blue Hell', below: 'Theory of everything 2' }
+        ];
+        let savedOrderChanges = [];
+        let orderChanges = historicalOrderChanges.slice();
         try {
             const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
             if (savedData && typeof savedData === 'object' && !Array.isArray(savedData)) {
@@ -1267,6 +1417,28 @@
             }
         } catch (error) {
             console.warn('Could not load the saved demon list.', error);
+        }
+        try {
+            const storedChanges = JSON.parse(localStorage.getItem(ORDER_CHANGE_STORAGE_KEY) || '[]');
+            if (Array.isArray(storedChanges)) {
+                savedOrderChanges = storedChanges.filter(change =>
+                    change && ['added', 'moved', 'removed', 'topOne'].includes(change.action) &&
+                    typeof change.title === 'string' && Number.isInteger(change.rank) &&
+                    (change.action === 'topOne'
+                        ? typeof change.previousTop === 'string' && (change.days === null || Number.isInteger(change.days))
+                        : typeof change.above === 'string' && typeof change.below === 'string')
+                );
+                const changeKey = change => [change.action, change.title, change.rank, change.previousTop || '', change.days ?? '', change.oldRank ?? '', change.above || '', change.below || ''].join('\u0000');
+                const knownChanges = new Set(orderChanges.map(changeKey));
+                savedOrderChanges.forEach(change => {
+                    if (!knownChanges.has(changeKey(change))) {
+                        orderChanges.push(change);
+                        knownChanges.add(changeKey(change));
+                    }
+                });
+            }
+        } catch (error) {
+            console.warn('Could not load the saved level order changes.', error);
         }
 
         function t(key, values = {}) {
@@ -1346,6 +1518,25 @@
                 demon.points = pointsForPlacement(index + 1);
                 demonsData[String(index + 1)] = demon;
             });
+        }
+
+        function recordOrderChange(change) {
+            const updatedChanges = [...savedOrderChanges, change];
+            try {
+                localStorage.setItem(ORDER_CHANGE_STORAGE_KEY, JSON.stringify(updatedChanges));
+                savedOrderChanges = updatedChanges;
+                orderChanges.push(change);
+            } catch (error) {
+                console.warn('Could not save the level order change to the changelog.', error);
+                adminStatus.textContent = t('changelogSaveFailed');
+            }
+        }
+
+        function orderNeighbors(entries, index) {
+            return {
+                above: entries[index + 1]?.[1].title || t('changelogBottomBoundary'),
+                below: entries[index - 1]?.[1].title || t('changelogTopBoundary')
+            };
         }
 
         function compressImage(file) {
@@ -1537,34 +1728,48 @@
             `;
         }
 
-        function renderInfo() {
+        function renderChangelog() {
             hidePlayerHistory();
             contentPanel.classList.remove('top-one-background');
+            const orderChangeItems = [...orderChanges].sort((first, second) => first.rank - second.rank).map(change => {
+                const formatKey = change.action === 'topOne'
+                    ? (Number.isInteger(change.days) ? 'changelogTopOneFormat' : 'changelogTopOnePending')
+                    : change.action === 'added' ? 'changelogAddedFormat'
+                    : change.action === 'removed' ? 'changelogRemovedFormat'
+                        : 'changelogMovedFormat';
+                return `<li>${escapeHTML(t(formatKey, {
+                    level: change.title,
+                    rank: change.rank,
+                    above: change.above,
+                    below: change.below,
+                    oldRank: change.oldRank,
+                    previousTop: change.previousTop,
+                    days: change.days
+                }))}</li>`;
+            }).join('');
             contentPanel.innerHTML = `
-                <section class="records-page info-page" aria-labelledby="info-title">
-                    <h2 id="info-title">${escapeHTML(t('aboutTitle'))}</h2>
-                    <p class="records-intro">${escapeHTML(t('aboutIntro'))}</p>
-                    <div class="info-grid">
-                        <div class="panel-section">
-                            <h3>${escapeHTML(t('howListWorks'))}</h3>
-                            <p>${escapeHTML(t('howListDescription'))}</p>
-                        </div>
-                        <div class="panel-section">
-                            <h3>${escapeHTML(t('playerPoints'))}</h3>
+                <section class="records-page changelog-page" aria-labelledby="changelog-title">
+                    <h2 id="changelog-title">${escapeHTML(t('changelogTitle'))}</h2>
+                    <p class="records-intro">${escapeHTML(t('changelogIntro'))}</p>
+                    <div class="changelog-list">
+                        <article class="panel-section changelog-entry">
+                            <h3><span>${escapeHTML(t('nextRelease'))}</span><span class="changelog-release-date">${escapeHTML(t('nextReleaseDate'))}</span></h3>
+                            <ul><li>${escapeHTML(t('changelogSectionAdded'))}</li></ul>
+                            <h4>${escapeHTML(t('changelogOrderTitle'))}</h4>
+                            ${orderChanges.length ? `<ul>${orderChangeItems}</ul>` : `<p>${escapeHTML(t('noLevelOrderChanges'))}</p>`}
+                        </article>
+                        <article class="panel-section changelog-entry">
+                            <h3><span>${escapeHTML(t('currentRelease'))}</span><span class="changelog-release-date">${escapeHTML(t('releaseDate'))}</span></h3>
+                            <h4>${escapeHTML(t('changelogChanges'))}</h4>
                             <ul>
-                                <li>${escapeHTML(t('completionPoints'))}</li>
-                                <li>${escapeHTML(t('verifierPoints'))}</li>
-                                <li>${escapeHTML(t('pointsUpdate'))}</li>
+                                <li><strong>${escapeHTML(t('changelogDesign'))}</strong><ul><li>${escapeHTML(t('changelogDarkTheme'))}</li><li>${escapeHTML(t('changelogTopOneRed'))}</li><li>${escapeHTML(t('changelogLanguages'))}</li></ul></li>
+                                <li><strong>${escapeHTML(t('changelogPlayerPoints'))}</strong><ul><li>${escapeHTML(t('changelogEarnPoints'))}</li><li>${escapeHTML(t('changelogVerificationBonus'))}</li></ul></li>
+                                <li><strong>${escapeHTML(t('changelogInGameDifficulty'))}</strong><ul><li>${escapeHTML(t('changelogUnratedEstimate'))}</li><li>${escapeHTML(t('changelogRobtopEstimate'))}</li></ul></li>
+                                <li><strong>${escapeHTML(t('changelogAlwaysAvailable'))}</strong><ul><li>${escapeHTML(t('changelogOfficialPage'))}</li></ul></li>
                             </ul>
-                        </div>
-                        <div class="panel-section">
-                            <h3>${escapeHTML(t('editingTheList'))}</h3>
-                            <p>${escapeHTML(t('editingDescription'))}</p>
-                        </div>
-                        <div class="panel-section">
-                            <h3>${escapeHTML(t('savedOnDevice'))}</h3>
-                            <p>${escapeHTML(t('savedDescription'))}</p>
-                        </div>
+                            <h4>${escapeHTML(t('changelogRankings'))}</h4>
+                            <ul><li>${escapeHTML(t('changelogNewTopOne'))}</li><li>${escapeHTML(t('changelogNewVerifiedLevels'))}</li></ul>
+                        </article>
                     </div>
                 </section>
             `;
@@ -1688,7 +1893,7 @@
             const activeView = navLinks.querySelector('[data-view].active')?.dataset.view || 'demons';
             sidebar.hidden = activeView !== 'demons';
             if (activeView === 'records') renderRecords();
-            else if (activeView === 'info') renderInfo();
+            else if (activeView === 'changelog') renderChangelog();
             else if (demonsData[activeRank]) selectLevel(activeRank);
             else contentPanel.innerHTML = `<div class="level-header"><h2>${escapeHTML(t('emptyList'))}</h2><p>${escapeHTML(t('addToStart'))}</p></div>`;
         });
@@ -1701,7 +1906,7 @@
             const view = link.dataset.view;
             sidebar.hidden = view !== 'demons';
             if (view === 'records') renderRecords();
-            else if (view === 'info') renderInfo();
+            else if (view === 'changelog') renderChangelog();
             else if (demonsData[activeRank]) selectLevel(activeRank);
             else contentPanel.innerHTML = `<div class="level-header"><h2>${escapeHTML(t('emptyList'))}</h2><p>${escapeHTML(t('addToStart'))}</p></div>`;
         });
@@ -1778,9 +1983,20 @@
             if (action === 'delete') {
                 if (!confirm(t('removeConfirmation', { title: demonsData[rank].title }))) return;
                 const oldIndex = rankedEntries().findIndex(([entryRank]) => entryRank === rank);
+                const removedDemon = demonsData[rank];
                 const remaining = rankedEntries().filter(([entryRank]) => entryRank !== rank);
                 renumberEntries(remaining);
                 saveData();
+                recordOrderChange({ action: 'removed', title: removedDemon.title, rank: oldIndex + 1, above: '', below: '' });
+                if (oldIndex === 0 && remaining.length) {
+                    recordOrderChange({
+                        action: 'topOne',
+                        title: remaining[0][1].title,
+                        rank: 1,
+                        previousTop: removedDemon.title,
+                        days: null
+                    });
+                }
                 renderList();
                 if (remaining.length) selectLevel(String(Math.min(oldIndex + 1, remaining.length)));
                 else contentPanel.innerHTML = `<div class="level-header"><h2>${escapeHTML(t('emptyList'))}</h2><p>${escapeHTML(t('addToStart'))}</p></div>`;
@@ -1820,13 +2036,35 @@
                 if (imageFile) demon.imageUrl = await compressImage(imageFile);
 
                 const current = rankedEntries();
+                const previousTopRank = current[0]?.[0];
+                const previousTopTitle = current[0]?.[1].title || '';
                 const previousIndex = editingRank ? current.findIndex(([rank]) => rank === editingRank) : current.length;
+                const previousRank = previousIndex + 1;
                 if (editingRank) current.splice(previousIndex, 1);
                 const destination = Math.max(0, Math.min(current.length, Number(fields.namedItem('placement').value) - 1));
                 current.splice(destination, 0, [editingRank || '', demon]);
+                const topOneChanged = previousTopRank !== current[0]?.[0];
                 renumberEntries(current);
                 activeRank = String(destination + 1);
                 saveData();
+                if (topOneChanged) {
+                    recordOrderChange({
+                        action: 'topOne',
+                        title: current[0][1].title,
+                        rank: 1,
+                        previousTop: previousTopTitle,
+                        days: null
+                    });
+                } else if (!editingRank || previousIndex !== destination) {
+                    const neighbors = orderNeighbors(current, destination);
+                    recordOrderChange({
+                        action: editingRank ? 'moved' : 'added',
+                        title: demon.title,
+                        rank: destination + 1,
+                        ...neighbors,
+                        ...(editingRank ? { oldRank: previousRank } : {})
+                    });
+                }
                 editor.close();
                 renderList();
                 selectLevel(activeRank);
